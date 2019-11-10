@@ -1,0 +1,17 @@
+version: "2.0"
+services:
+  meteor:
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./:/src
+    ports:
+      - "8265:3000"
+    environment:
+      - METEOR_ALLOW_SUPERUSER=1
+  mongodb:
+    image: mongo
+    volumes:
+      - ./mongo-db:/data/db
+
